@@ -49,10 +49,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnSignup.setOnClickListener {
             clearFocus()
             if (!allFieldsFilled()) {
-                Toast.makeText(this, "Please Fill Up The Required Fields", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Пожалуйста заполните все поля", Toast.LENGTH_SHORT)
                     .show()
             } else if (!allValidCheck()) {
-                Toast.makeText(this, "Please Provide Valid Info", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Заполните корректные данные", Toast.LENGTH_SHORT).show()
             } else {
                 registerUser()
             }
@@ -78,8 +78,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     database =
-                        FirebaseDatabase.getInstance("https://hellofood-c1d85-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                            .getReference()
+                        FirebaseDatabase.getInstance("https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40minibrooo.iam.gserviceaccount.com").getReference()
 
                     val user = User(firstName, lastName, email, phoneno, address)
                     database.child("users").child(Firebase.auth.currentUser!!.uid).setValue(user)
